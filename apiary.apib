@@ -17,7 +17,7 @@ Amazing Lighthouse API
 
 ### Party Querying [GET]
 + Parameters
-    + code: SCINC (string)
+    + code: SCINC (string, optional)
     
 + Response 200 (application/vnd.com.garnercorp.lighthouse.party+json;v=1)
     + Attributes(array[PartyIdentified]) 
@@ -34,7 +34,7 @@ Amazing Lighthouse API
 
 ### Facility Querying [GET]
 + Parameters
-    + code: BAM001 (string)
+    + code: BAM001 (string, optional)
     
 + Response 200 (application/vnd.com.garnercorp.lighthouse.party+json;v=1)
     + Attributes(array[FacilityIdentified]) 
@@ -44,9 +44,9 @@ Amazing Lighthouse API
 
 ### Transfer Querying [GET]
 + Parameters
-    + number: TR001 (string)
-    + referencedAsCode: `BILL_OF_LADING` (string)
-    + referencedAsValue: bill16 (string)
+    + number: TR001 (string, optional)
+    + referencedAsCode: `BILL_OF_LADING` (string, optional)
+    + referencedAsValue: bill16 (string, optional)
     
 + Response 200 (application/vnd.com.garnercorp.lighthouse.transfer+json;v=1)
     + Attributes(array[TransferIdentified])
@@ -63,6 +63,8 @@ Amazing Lighthouse API
             
     + Attributes(TransferIdentified)
             
+
+
 ## Data Structures
 
 ### PartyIdentified (Party)
