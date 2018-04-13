@@ -1,80 +1,81 @@
 FORMAT: 1A
-HOST: http://polls.apiblueprint.org/
+HOST: https://lighthouse.garnercorp.com/
 
 # Lighthouse API
 
-TBD
+Amazing Lighthouse API
+
+## Party [/parties/{id}]
+
+### Party [GET]
++ Parameters
+    + id: `566fac19-16ff-40ff-99d0-ad54bea25092` (UUID, required)
++ Response 200 (application/vnd.com.garnercorp.lighthouse.party+json;v=1)
+    + Attributes(PartyIdentified) 
+
+## Parties [/parties{?code}]
+
+### Party Querying [GET]
++ Parameters
+    + code: SCINC (string)
+    
++ Response 200 (application/vnd.com.garnercorp.lighthouse.party+json;v=1)
+    + Attributes(PartyIdentified) 
 
 ## Transfers [/transfers]
 
 ### List Transfers [GET]
 
-+ Response 200 (application/json)
-    + Attributes(array[Transfer])
++ Response 200 (application/vnd.com.garnercorp.lighthouse.transfer+json;v=1)
+    + Attributes(array[TransferIdentified])
 
-### Create a New Question [POST]
-
-You may create your own question using this action. It takes a JSON
-object containing a question and a collection of answers in the
-form of choices.
-
-+ Request (application/json)
-
-        {
-            "question": "Favourite programming language?",
-            "choices": [
-                "Swift",
-                "Python",
-                "Objective-C",
-                "Ruby"
-            ]
-        }
-
-+ Response 201 (application/json)
-
+### Create a New Transfer [POST]
++ Relation: create
++ Request (application/vnd.com.garnercorp.lighthouse.transfer+json;v=1)
+       + Attributes(Transfer)
+       
++ Response 201 (application/vnd.com.garnercorp.lighthouse.transfer+json;v=1)
     + Headers
-
-            Location: /questions/2
-
-    + Body
-
-            {
-                "question": "Favourite programming language?",
-                "published_at": "2015-08-05T08:40:51.620Z",
-                "choices": [
-                    {
-                        "choice": "Swift",
-                        "votes": 0
-                    }, {
-                        "choice": "Python",
-                        "votes": 0
-                    }, {
-                        "choice": "Objective-C",
-                        "votes": 0
-                    }, {
-                        "choice": "Ruby",
-                        "votes": 0
-                    }
-                ]
-            }
+    
+            Location: /transfers/566fac19-16ff-40ff-99d0-ad54bea25092
+            
+    + Attributes(TransferIdentified)
             
 ## Data Structures
 
-### Transfer
+### PartyIdentified (Party)
++ id: `cc6fac19-16ff-40ff-99d0-ad54bea25091` (UUID)
 
-+ id: 566fac19-16ff-40ff-99d0-ad54bea25092 (UUID)
+### Party
++ name: Sorenson Controls (string, required)
+
+### PartyQuery
++ id: `cc6fac19-16ff-40ff-99d0-ad54bea25091` (UUID)
++ code: SCINC (string)
+
+### FacilityIdentified (Facility)
++ id: `ff6fac19-16ff-40ff-99d0-ad54bea25045` (UUID)
+
+### Facility
++ name: Bamboo Base (string, required)
++ controlledBy (PartyIdentified)
+
+### TransferIdentified (Transfer)
++ id: `566fac19-16ff-40ff-99d0-ad54bea25092` (UUID)
+
+### Transfer
 + number: TR001 (string, required)
 + from (FacilityLink, required)
 + to (FacilityLink, required)
 
 ### FacilityLink
 
-+ link (Link, required)
++ link (FacilityLinkDetails, required)
 
-### Link
+### FacilityLinkDetails
 
-+ rel: suppliedBy (string, required)
-+ href: /concept/uuid (string, required)
-+ type: application/vnd.com.garnercorp.lighthouse.concept (string, required)
++ rel: tbd (string, required)
++ href: /facilities/uuid (string, required)
++ type: application/vnd.com.garnercorp.lighthouse.facility+json;v=1 (string, required)
 
 ### UUID (string)
