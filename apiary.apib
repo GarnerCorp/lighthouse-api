@@ -3,35 +3,14 @@ HOST: http://polls.apiblueprint.org/
 
 # Lighthouse API
 
-Polls is a simple API allowing consumers to view polls and vote in them.
+TBD
 
-## Questions Collection [/questions]
+## Transfers [/transfers]
 
-### List All Questions [GET]
+### List Transfers [GET]
 
 + Response 200 (application/json)
-
-        [
-            {
-                "question": "Favourite programming language?",
-                "published_at": "2015-08-05T08:40:51.620Z",
-                "choices": [
-                    {
-                        "choice": "Swift",
-                        "votes": 2048
-                    }, {
-                        "choice": "Python",
-                        "votes": 1024
-                    }, {
-                        "choice": "Objective-C",
-                        "votes": 512
-                    }, {
-                        "choice": "Ruby",
-                        "votes": 256
-                    }
-                ]
-            }
-        ]
+    + Attributes(array[Transfer])
 
 ### Create a New Question [POST]
 
@@ -78,3 +57,24 @@ form of choices.
                     }
                 ]
             }
+            
+## Data Structures
+
+### Transfer
+
++ id: 566fac19-16ff-40ff-99d0-ad54bea25092 (UUID)
++ number: TR001 (string, required)
++ from (FacilityLink, required)
++ to (FacilityLink, required)
+
+### FacilityLink
+
++ link (Link, required)
+
+### Link
+
++ rel: suppliedBy (string, required)
++ href: /concept/uuid (string, required)
++ type: application/vnd.com.garnercorp.lighthouse.concept (string, required)
+
+### UUID (string)
