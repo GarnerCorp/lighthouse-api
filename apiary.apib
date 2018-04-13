@@ -7,7 +7,7 @@ Amazing Lighthouse API
 
 ## Party [/parties/{id}]
 
-### Party [GET]
+### Get Party [GET]
 + Parameters
     + id: `566fac19-16ff-40ff-99d0-ad54bea25092` (UUID, required)
 + Response 200 (application/vnd.com.garnercorp.lighthouse.party+json;v=1)
@@ -20,12 +20,34 @@ Amazing Lighthouse API
     + code: SCINC (string)
     
 + Response 200 (application/vnd.com.garnercorp.lighthouse.party+json;v=1)
-    + Attributes(PartyIdentified) 
+    + Attributes(array[PartyIdentified]) 
 
-## Transfers [/transfers]
+## Facility [/facilities/{id}]
 
-### List Transfers [GET]
+### Get Facility [GET]
++ Parameters
+    + id: `566fac19-16ff-40ff-99d0-ad54bea25092` (UUID, required)
++ Response 200 (application/vnd.com.garnercorp.lighthouse.party+json;v=1)
+    + Attributes(FacilityIdentified) 
 
+## Facilities [/facilities{?code}]
+
+### Facility Querying [GET]
++ Parameters
+    + code: BAM001 (string)
+    
++ Response 200 (application/vnd.com.garnercorp.lighthouse.party+json;v=1)
+    + Attributes(array[FacilityIdentified]) 
+
+
+## Transfers [/transfers{?number,referencedAsCode,referencedAsValue}]
+
+### Transfer Querying [GET]
++ Parameters
+    + number: TR001 (string)
+    + referencedAsCode: `BILL_OF_LADING` (string)
+    + referencedAsValue: bill16 (string)
+    
 + Response 200 (application/vnd.com.garnercorp.lighthouse.transfer+json;v=1)
     + Attributes(array[TransferIdentified])
 
