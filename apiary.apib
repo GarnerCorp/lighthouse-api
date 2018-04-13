@@ -44,12 +44,15 @@ Amazing Lighthouse API
 ### Create a new status [POST /transfers/{id}/statuses]
 + Parameters
     + id: `566fac19-16ff-40ff-99d0-ad54bea25092` (UUID, required)
+    
++ Request (application/vnd.com.garnercorp.lighthouse.status+json;v=1)
+    + Attributes(Status)
 
-+ Response 201
++ Response 201 (application/vnd.com.garnercorp.lighthouse.status+json;v=1)
     + Headers 
     
             Location: /transfers/{id}/statuses/`126fac19-16ff-40ff-99d0-ad54bea250ff`
-
+    + Attributes(StatusIdentified)
     
 
 
@@ -76,6 +79,47 @@ Amazing Lighthouse API
             
     + Attributes(TransferIdentified)
 
+## Group Material
+ 
+### Create a new status [POST /materials/{id}/statuses]
++ Parameters
+    + id: `566fac19-16ff-40ff-99d0-ad54bea25092` (UUID, required)
+    
++ Request (application/vnd.com.garnercorp.lighthouse.status+json;v=1)
+    + Attributes(Status)
+
++ Response 201 (application/vnd.com.garnercorp.lighthouse.status+json;v=1)
+    + Headers 
+    
+            Location: /materials/{id}/statuses/`126fac19-16ff-40ff-99d0-ad54bea250ff`
+    + Attributes(StatusIdentified)
+    
+
+
+## Materials [/materials{?materialId,referencedAsCode,referencedAsValue}]
+
+### Material Querying [GET]
++ Parameters
+    + materialId: MAT1777 (string, optional)
+    + referencedAsCode: `WORKPACK` (string, optional)
+    + referencedAsValue: 1x45tthg (string, optional)
+    
++ Response 200 (application/vnd.com.garnercorp.lighthouse.material+json;v=1)
+    + Attributes(array[MaterialIdentified])
+
+### Create a new material [POST]
++ Relation: create
++ Request (application/vnd.com.garnercorp.lighthouse.material+json;v=1)
+       + Attributes(Material)
+       
++ Response 201 (application/vnd.com.garnercorp.lighthouse.material+json;v=1)
+    + Headers
+    
+            Location: /materials/566fac19-16ff-40ff-99d0-ad54bea25092
+            
+    + Attributes(MaterialIdentified)
+
+
 ## Data Structures
 
 ### PartyIdentified (Party)
@@ -88,12 +132,28 @@ Amazing Lighthouse API
 + id: `cc6fac19-16ff-40ff-99d0-ad54bea25091` (UUID)
 + code: SCINC (string)
 
+### PartyLink
++ link (PartyLinkDetails, required)
+
+### PartyLinkDetails
++ rel: tbd (string, required)
++ href: /parties/{id} (string, required)
++ type: application/vnd.com.garnercorp.lighthouse.party+json;v=1 (string, required)
+
 ### FacilityIdentified (Facility)
 + id: `ff6fac19-16ff-40ff-99d0-ad54bea25045` (UUID)
 
 ### Facility
 + name: Bamboo Base (string, required)
 + controlledBy (PartyIdentified)
+
+### FacilityLink
++ link (FacilityLinkDetails, required)
+
+### FacilityLinkDetails
++ rel: tbd (string, required)
++ href: /facilities/{id} (string, required)
++ type: application/vnd.com.garnercorp.lighthouse.facility+json;v=1 (string, required)
 
 ### TransferIdentified (Transfer)
 + id: `566fac19-16ff-40ff-99d0-ad54bea25092` (UUID)
@@ -103,13 +163,20 @@ Amazing Lighthouse API
 + from (FacilityLink, required)
 + to (FacilityLink, required)
 
-### FacilityLink
-+ link (FacilityLinkDetails, required)
+### MaterialIdentified (Material)
++ id: `ab6fac19-16ff-40ff-99d0-ad54bea250ff` (UUID)
 
-### FacilityLinkDetails
-+ rel: tbd (string, required)
-+ href: /facilities/uuid (string, required)
-+ type: application/vnd.com.garnercorp.lighthouse.facility+json;v=1 (string, required)
+### Material
++ materialId: MAT1231 (string)
++ quantity: 12.5 (number)
++ description (string)
++ suppliedBy (PartyLink, optional)
++ managedBy (PartyLink, optional)
++ observedBy (array[PartyLink], optional)
++ at (FacilityLink, optional)
++ attained (array[MaterialStatusLink])
++ forecasted (array[MaterialStatusLink])
++ referencedAs (array[MaterialReferenceLink])
 
 ### UUID (string)
 
@@ -120,3 +187,26 @@ Amazing Lighthouse API
 ### Status
 + code: `CUSTOMS_CLEARED` (string)
 + occursOn: `2018-04-13T12:01:56` (string) - Local time
+
+### MaterialStatusLink
++ link (MaterialStatusLinkDetails, required)
+
+### MaterialStatusLinkDetails
++ rel: tbd (string, required)
++ href: /materials/{id}/statuses/{id} (string, required)
++ type: application/vnd.com.garnercorp.lighthouse.status+json;v=1 (string, required)
+
+### ReferenceIdentified (Reference)
++ id: `566fac19-16ff-40ff-99d0-ad54bea25092` (UUID)
+
+### Reference
++ code: WORKPACK (string)
++ value: WP123 (string)
+
+### MaterialReferenceLink
++ link (MaterialReferenceLinkDetails, required)
+
+### MaterialReferenceLinkDetails
++ rel: tbd (string, required)
++ href: /materials/{id}/references/{id} (string, required)
++ type: application/vnd.com.garnercorp.lighthouse.reference+json;v=1 (string, required)
