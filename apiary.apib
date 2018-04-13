@@ -81,7 +81,7 @@ Amazing Lighthouse API
 
 ## Group Material
  
-### Create a new status [POST /materials/{id}/statuses]
+### Create a new attained status [POST /materials/{id}/attained-statuses]
 + Parameters
     + id: `566fac19-16ff-40ff-99d0-ad54bea25092` (UUID, required)
     
@@ -94,6 +94,19 @@ Amazing Lighthouse API
             Location: /materials/{id}/statuses/`126fac19-16ff-40ff-99d0-ad54bea250ff`
     + Attributes(StatusIdentified)
     
+    
+### Create a new forecasted status [POST /materials/{id}/forecasted-statuses]
++ Parameters
+    + id: `566fac19-16ff-40ff-99d0-ad54bea25092` (UUID, required)
+    
++ Request (application/vnd.com.garnercorp.lighthouse.status+json;v=1)
+    + Attributes(Status)
+
++ Response 201 (application/vnd.com.garnercorp.lighthouse.status+json;v=1)
+    + Headers 
+    
+            Location: /materials/{id}/statuses/`126fac19-16ff-40ff-99d0-ad54bea250ff`
+    + Attributes(StatusIdentified)
 
 
 ## Materials [/materials{?materialId,referencedAsCode,referencedAsValue}]
