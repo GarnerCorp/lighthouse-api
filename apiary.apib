@@ -68,8 +68,6 @@ Amazing Lighthouse API
             Location: /transfers/{id}/statuses/`126fac19-16ff-40ff-99d0-ad54bea250ff`
     + Attributes(StatusIdentified)
     
-
-
 ## Transfers [/transfers{?number,referencedAsCode,referencedAsValue}]
 
 ### Transfer querying [GET]
@@ -189,9 +187,29 @@ Amazing Lighthouse API
 + number: TR001 (string, required)
 + from (FacilityLink, required)
 + to (FacilityLink, required)
++ attained (array[TransferStatusLink], optional)
++ forecasted (array[TransferStatusLink], optional)
++ referencedAs (array[TransferReferenceLink], optional)
++ carriedBy (PartyLink, optional)
 
 ### MaterialIdentified (Material)
 + id: `ab6fac19-16ff-40ff-99d0-ad54bea250ff` (UUID)
+
+### TransferStatusLink
++ link (TransferStatusLinkDetails, required)
+
+### TransferStatusLinkDetails
++ rel: tbd (string, required)
++ href: /transfers/{id}/statuses/{id} (string, required)
++ type: application/vnd.com.garnercorp.lighthouse.status+json;v=1 (string, required)
+
+### TransferReferenceLink
++ link (TransferReferenceLinkDetails, required)
+
+### TransferReferenceLinkDetails
++ rel: tbd (string, required)
++ href: /transfers/{id}/references/{id} (string, required)
++ type: application/vnd.com.garnercorp.lighthouse.reference+json;v=1 (string, required)
 
 ### Material
 + materialId: MAT1231 (string)
