@@ -39,6 +39,19 @@ Amazing Lighthouse API
 + Response 200 (application/vnd.com.garnercorp.lighthouse.party+json;v=1)
     + Attributes(array[FacilityIdentified]) 
 
+## Group Transfer
+ 
+### Create a new status [POST /transfers/{id}/statuses]
++ Parameters
+    + id: `566fac19-16ff-40ff-99d0-ad54bea25092` (UUID, required)
+
++ Response 201
+    + Headers 
+    
+            Location: /transfers/{id}/statuses/`126fac19-16ff-40ff-99d0-ad54bea250ff`
+
+    
+
 
 ## Transfers [/transfers{?number,referencedAsCode,referencedAsValue}]
 
@@ -51,7 +64,7 @@ Amazing Lighthouse API
 + Response 200 (application/vnd.com.garnercorp.lighthouse.transfer+json;v=1)
     + Attributes(array[TransferIdentified])
 
-### Create a New Transfer [POST]
+### Create a new transfer [POST]
 + Relation: create
 + Request (application/vnd.com.garnercorp.lighthouse.transfer+json;v=1)
        + Attributes(Transfer)
@@ -62,8 +75,6 @@ Amazing Lighthouse API
             Location: /transfers/566fac19-16ff-40ff-99d0-ad54bea25092
             
     + Attributes(TransferIdentified)
-            
-
 
 ## Data Structures
 
@@ -93,13 +104,19 @@ Amazing Lighthouse API
 + to (FacilityLink, required)
 
 ### FacilityLink
-
 + link (FacilityLinkDetails, required)
 
 ### FacilityLinkDetails
-
 + rel: tbd (string, required)
 + href: /facilities/uuid (string, required)
 + type: application/vnd.com.garnercorp.lighthouse.facility+json;v=1 (string, required)
 
 ### UUID (string)
+
+### StatusIdentified (Status)
++ id: `566fac19-16ff-40ff-99d0-ad54bea25092` (UUID)
++ submittedOn: `2018-04-13T16:04:23Z` - UTC time
+
+### Status
++ code: `CUSTOMS_CLEARED` (string)
++ occursOn: `2018-04-13T12:01:56` (string) - Local time
