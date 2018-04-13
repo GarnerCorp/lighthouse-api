@@ -3,8 +3,6 @@ HOST: https://lighthouse.garnercorp.com/
 
 # Lighthouse API
 
-Amazing Lighthouse API
-
 ## Party [/parties/{id}]
 
 ### Get Party [GET]
@@ -79,7 +77,6 @@ Amazing Lighthouse API
     + Attributes(array[TransferIdentified])
 
 ### Create a new transfer [POST]
-+ Relation: create
 + Request (application/vnd.com.garnercorp.lighthouse.transfer+json;v=1)
        + Attributes(Transfer)
        
@@ -131,7 +128,6 @@ Amazing Lighthouse API
     + Attributes(array[MaterialIdentified])
 
 ### Create a new material [POST]
-+ Relation: create
 + Request (application/vnd.com.garnercorp.lighthouse.material+json;v=1)
        + Attributes(Material)
        
@@ -180,6 +176,9 @@ Amazing Lighthouse API
 
 ### TransferIdentified (Transfer)
 + id: `566fac19-16ff-40ff-99d0-ad54bea25092` (UUID)
++ attained (array[StatusIdentified], optional)
++ forecasted (array[StatusIdentified], optional)
++ referencedAs (array[ReferenceIdentified], optional)
 
 ### Transfer
 + number: TR001 (string, required)
@@ -193,6 +192,9 @@ Amazing Lighthouse API
 
 ### MaterialIdentified (Material)
 + id: `ab6fac19-16ff-40ff-99d0-ad54bea250ff` (UUID)
++ attained (array[StatusIdentified], optional)
++ forecasted (array[StatusIdentified], optional)
++ referencedAs (array[ReferenceIdentified], optional)
 
 ### TransferStatusLink
 + link (TransferStatusLinkDetails, required)
