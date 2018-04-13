@@ -68,13 +68,12 @@ Amazing Lighthouse API
             Location: /transfers/{id}/statuses/`126fac19-16ff-40ff-99d0-ad54bea250ff`
     + Attributes(StatusIdentified)
     
-## Transfers [/transfers{?number,referencedAsCode,referencedAsValue}]
+## Transfers [/transfers{?number,referencedAs}]
 
 ### Transfer querying [GET]
 + Parameters
     + number: TR001 (string, optional)
-    + referencedAsCode: `BILL_OF_LADING` (string, optional)
-    + referencedAsValue: bill16 (string, optional)
+    + referencedAs: `BILL_OF_LADING:BL345` (string, optional)
     
 + Response 200 (application/vnd.com.garnercorp.lighthouse.transfer+json;v=1)
     + Attributes(array[TransferIdentified])
@@ -121,13 +120,12 @@ Amazing Lighthouse API
     + Attributes(StatusIdentified)
 
 
-## Materials [/materials{?materialId,referencedAsCode,referencedAsValue}]
+## Materials [/materials{?materialId,referencedAs}]
 
 ### Material querying [GET]
 + Parameters
     + materialId: MAT1777 (string, optional)
-    + referencedAsCode: `WORKPACK` (string, optional)
-    + referencedAsValue: 1x45tthg (string, optional)
+    + referencedAs: `WORKPACK:1x45tthg` (string, optional)
     
 + Response 200 (application/vnd.com.garnercorp.lighthouse.material+json;v=1)
     + Attributes(array[MaterialIdentified])
@@ -187,9 +185,10 @@ Amazing Lighthouse API
 + number: TR001 (string, required)
 + from (FacilityLink, required)
 + to (FacilityLink, required)
-+ attained (array[TransferStatusLink], optional)
-+ forecasted (array[TransferStatusLink], optional)
-+ referencedAs (array[TransferReferenceLink], optional)
++ attained (array[Status], optional)
++ forecasted (array[Status], optional)
++ referencedAs (array[Reference], optional)
++ comprises (array[MaterialLink], optional)
 + carriedBy (PartyLink, optional)
 
 ### MaterialIdentified (Material)
@@ -219,9 +218,18 @@ Amazing Lighthouse API
 + managedBy (PartyLink, optional)
 + observedBy (array[PartyLink], optional)
 + at (FacilityLink, optional)
-+ attained (array[MaterialStatusLink])
-+ forecasted (array[MaterialStatusLink])
-+ referencedAs (array[MaterialReferenceLink])
++ attained (array[Status])
++ forecasted (array[Status])
++ referencedAs (array[Reference])
+
+### MaterialLink
++ link (MaterialLinkDetails, required)
+
+### MaterialLinkDetails
++ rel: tbd (string, required)
++ href: /materials/{id} (string, required)
++ type: application/vnd.com.garnercorp.lighthouse.material+json;v=1 (string, required)
+
 
 ### UUID (string)
 
