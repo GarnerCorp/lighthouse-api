@@ -3,41 +3,45 @@ HOST: https://lighthouse.garnercorp.com/
 
 # Lighthouse API
 
-## Party [/parties/{id}]
+## Group Parties
 
-### Get Party [GET]
+### Party [/parties/{id}]
+
+#### Get Party [GET]
 + Parameters
     + id: `566fac19-16ff-40ff-99d0-ad54bea25092` (UUID, required)
 + Response 200 (application/vnd.com.garnercorp.lighthouse.party+json;v=1)
     + Attributes(PartyIdentified) 
 
-## Parties [/parties{?code}]
+### Parties [/parties{?code}]
 
-### Party querying [GET]
+#### Query Parties [GET]
 + Parameters
     + code: SCINC (string, optional)
     
 + Response 200 (application/vnd.com.garnercorp.lighthouse.party+json;v=1)
     + Attributes(array[PartyIdentified]) 
 
-## Facility [/facilities/{id}]
+## Group Facilities
 
-### Get Facility [GET]
+### Facility [/facilities/{id}]
+
+#### Get Facility [GET]
 + Parameters
     + id: `566fac19-16ff-40ff-99d0-ad54bea25092` (UUID, required)
 + Response 200 (application/vnd.com.garnercorp.lighthouse.party+json;v=1)
     + Attributes(FacilityIdentified) 
 
-## Facilities [/facilities{?code}]
+### Facilities [/facilities{?code}]
 
-### Facility querying [GET]
+#### Get Facilities [GET]
 + Parameters
     + code: BAM001 (string, optional)
     
 + Response 200 (application/vnd.com.garnercorp.lighthouse.party+json;v=1)
     + Attributes(array[FacilityIdentified]) 
 
-## Group Transfer
+## Group Transferpart
  
 ### Create a new attained status [POST /transfers/{id}/attained-statuses]
 + Parameters
