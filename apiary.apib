@@ -3,6 +3,114 @@ HOST: https://lighthouse.garnercorp.com/
 
 # Lighthouse API
 
+
+## Group Transfers
+
+### Transfer [/transfers/{id}]
+
+#### Create a new attained status [POST /transfers/{id}/attained-statuses]
++ Parameters
+    + id: `566fac19-16ff-40ff-99d0-ad54bea25092` (UUID, required)
+    
++ Request (application/vnd.com.garnercorp.lighthouse.status+json;v=1)
+    + Attributes(Status)
+
++ Response 201 (application/vnd.com.garnercorp.lighthouse.status+json;v=1)
+    + Headers 
+    
+            Location: /transfers/{id}/statuses/`126fac19-16ff-40ff-99d0-ad54bea250ff`
+    + Attributes(StatusIdentified)
+    
+    
+#### Create a new forecasted status [POST /transfers/{id}/forecasted-statuses]
++ Parameters
+    + id: `566fac19-16ff-40ff-99d0-ad54bea25092` (UUID, required)
+    
++ Request (application/vnd.com.garnercorp.lighthouse.status+json;v=1)
+    + Attributes(Status)
+
++ Response 201 (application/vnd.com.garnercorp.lighthouse.status+json;v=1)
+    + Headers 
+    
+            Location: /transfers/{id}/statuses/`126fac19-16ff-40ff-99d0-ad54bea250ff`
+    + Attributes(StatusIdentified)
+    
+### Transfers [/transfers{?number,referencedAs}]
+
+#### Query Transfers [GET]
++ Parameters
+    + number: TR001 (string, optional)
+    + referencedAs: `BILL_OF_LADING:BL345` (string, optional)
+    
++ Response 200 (application/vnd.com.garnercorp.lighthouse.transfer+json;v=1)
+    + Attributes(array[TransferIdentified])
+
+#### Create a new transfer [POST]
++ Request (application/vnd.com.garnercorp.lighthouse.transfer+json;v=1)
+       + Attributes(Transfer)
+       
++ Response 201 (application/vnd.com.garnercorp.lighthouse.transfer+json;v=1)
+    + Headers
+    
+            Location: /transfers/566fac19-16ff-40ff-99d0-ad54bea25092
+            
+    + Attributes(TransferIdentified)
+
+
+## Group Materials
+
+### Material [/materials/{id}]
+
+#### Create a new attained status [POST /materials/{id}/attained-statuses]
++ Parameters
+    + id: `566fac19-16ff-40ff-99d0-ad54bea25092` (UUID, required)
+    
++ Request (application/vnd.com.garnercorp.lighthouse.status+json;v=1)
+    + Attributes(Status)
+
++ Response 201 (application/vnd.com.garnercorp.lighthouse.status+json;v=1)
+    + Headers 
+    
+            Location: /materials/{id}/statuses/`126fac19-16ff-40ff-99d0-ad54bea250ff`
+    + Attributes(StatusIdentified)
+    
+    
+#### Create a new forecasted status [POST /materials/{id}/forecasted-statuses]
++ Parameters
+    + id: `566fac19-16ff-40ff-99d0-ad54bea25092` (UUID, required)
+    
++ Request (application/vnd.com.garnercorp.lighthouse.status+json;v=1)
+    + Attributes(Status)
+
++ Response 201 (application/vnd.com.garnercorp.lighthouse.status+json;v=1)
+    + Headers 
+    
+            Location: /materials/{id}/statuses/`126fac19-16ff-40ff-99d0-ad54bea250ff`
+    + Attributes(StatusIdentified)
+
+
+### Materials [/materials{?materialId,referencedAs}]
+
+#### Query Materials [GET]
++ Parameters
+    + materialId: MAT1777 (string, optional)
+    + referencedAs: `WORKPACK:1x45tthg` (string, optional)
+    
++ Response 200 (application/vnd.com.garnercorp.lighthouse.material+json;v=1)
+    + Attributes(array[MaterialIdentified])
+
+#### Create a new material [POST]
++ Request (application/vnd.com.garnercorp.lighthouse.material+json;v=1)
+       + Attributes(Material)
+       
++ Response 201 (application/vnd.com.garnercorp.lighthouse.material+json;v=1)
+    + Headers
+    
+            Location: /materials/566fac19-16ff-40ff-99d0-ad54bea25092
+            
+    + Attributes(MaterialIdentified)
+
+
 ## Group Parties
 
 ### Party [/parties/{id}]
@@ -22,6 +130,7 @@ HOST: https://lighthouse.garnercorp.com/
 + Response 200 (application/vnd.com.garnercorp.lighthouse.party+json;v=1)
     + Attributes(array[PartyIdentified]) 
 
+
 ## Group Facilities
 
 ### Facility [/facilities/{id}]
@@ -40,107 +149,6 @@ HOST: https://lighthouse.garnercorp.com/
     
 + Response 200 (application/vnd.com.garnercorp.lighthouse.party+json;v=1)
     + Attributes(array[FacilityIdentified]) 
-
-## Group Transferpart
- 
-### Create a new attained status [POST /transfers/{id}/attained-statuses]
-+ Parameters
-    + id: `566fac19-16ff-40ff-99d0-ad54bea25092` (UUID, required)
-    
-+ Request (application/vnd.com.garnercorp.lighthouse.status+json;v=1)
-    + Attributes(Status)
-
-+ Response 201 (application/vnd.com.garnercorp.lighthouse.status+json;v=1)
-    + Headers 
-    
-            Location: /transfers/{id}/statuses/`126fac19-16ff-40ff-99d0-ad54bea250ff`
-    + Attributes(StatusIdentified)
-    
-    
-### Create a new forecasted status [POST /transfers/{id}/forecasted-statuses]
-+ Parameters
-    + id: `566fac19-16ff-40ff-99d0-ad54bea25092` (UUID, required)
-    
-+ Request (application/vnd.com.garnercorp.lighthouse.status+json;v=1)
-    + Attributes(Status)
-
-+ Response 201 (application/vnd.com.garnercorp.lighthouse.status+json;v=1)
-    + Headers 
-    
-            Location: /transfers/{id}/statuses/`126fac19-16ff-40ff-99d0-ad54bea250ff`
-    + Attributes(StatusIdentified)
-    
-## Transfers [/transfers{?number,referencedAs}]
-
-### Transfer querying [GET]
-+ Parameters
-    + number: TR001 (string, optional)
-    + referencedAs: `BILL_OF_LADING:BL345` (string, optional)
-    
-+ Response 200 (application/vnd.com.garnercorp.lighthouse.transfer+json;v=1)
-    + Attributes(array[TransferIdentified])
-
-### Create a new transfer [POST]
-+ Request (application/vnd.com.garnercorp.lighthouse.transfer+json;v=1)
-       + Attributes(Transfer)
-       
-+ Response 201 (application/vnd.com.garnercorp.lighthouse.transfer+json;v=1)
-    + Headers
-    
-            Location: /transfers/566fac19-16ff-40ff-99d0-ad54bea25092
-            
-    + Attributes(TransferIdentified)
-
-## Group Material
- 
-### Create a new attained status [POST /materials/{id}/attained-statuses]
-+ Parameters
-    + id: `566fac19-16ff-40ff-99d0-ad54bea25092` (UUID, required)
-    
-+ Request (application/vnd.com.garnercorp.lighthouse.status+json;v=1)
-    + Attributes(Status)
-
-+ Response 201 (application/vnd.com.garnercorp.lighthouse.status+json;v=1)
-    + Headers 
-    
-            Location: /materials/{id}/statuses/`126fac19-16ff-40ff-99d0-ad54bea250ff`
-    + Attributes(StatusIdentified)
-    
-    
-### Create a new forecasted status [POST /materials/{id}/forecasted-statuses]
-+ Parameters
-    + id: `566fac19-16ff-40ff-99d0-ad54bea25092` (UUID, required)
-    
-+ Request (application/vnd.com.garnercorp.lighthouse.status+json;v=1)
-    + Attributes(Status)
-
-+ Response 201 (application/vnd.com.garnercorp.lighthouse.status+json;v=1)
-    + Headers 
-    
-            Location: /materials/{id}/statuses/`126fac19-16ff-40ff-99d0-ad54bea250ff`
-    + Attributes(StatusIdentified)
-
-
-## Materials [/materials{?materialId,referencedAs}]
-
-### Material querying [GET]
-+ Parameters
-    + materialId: MAT1777 (string, optional)
-    + referencedAs: `WORKPACK:1x45tthg` (string, optional)
-    
-+ Response 200 (application/vnd.com.garnercorp.lighthouse.material+json;v=1)
-    + Attributes(array[MaterialIdentified])
-
-### Create a new material [POST]
-+ Request (application/vnd.com.garnercorp.lighthouse.material+json;v=1)
-       + Attributes(Material)
-       
-+ Response 201 (application/vnd.com.garnercorp.lighthouse.material+json;v=1)
-    + Headers
-    
-            Location: /materials/566fac19-16ff-40ff-99d0-ad54bea25092
-            
-    + Attributes(MaterialIdentified)
 
 
 ## Data Structures
